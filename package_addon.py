@@ -32,4 +32,4 @@ included_files = [
     "examples/tex/Untitled.png"
 ]
 os.chdir("..")
-zip_files(included_files, "MAYBEE_v220.zip")
+zip_files(included_files, "MAYBEE_v230.zip")
