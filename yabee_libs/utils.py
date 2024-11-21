@@ -23,7 +23,7 @@ def save_image(img, file_path, text_path):
         old_path = bpy.path.abspath(img.filepath)
         old_dir, old_file = os.path.split(convertFileNameToPanda(old_path))
         filenames = [s.lower() for s in old_file.split('.')]
-        if not filenames[-1] in ('jpg', 'png', 'tga', 'tiff', 'dds', 'bmp') and img.is_dirty:
+        if filenames[-1] not in ('jpg', 'png', 'tga', 'tiff', 'dds', 'bmp') and img.is_dirty:
             old_file += ('.' + bpy.context.scene.render.image_settings.file_format.lower())
     else:
         old_path = ''

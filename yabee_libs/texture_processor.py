@@ -368,7 +368,7 @@ if __name__ == '__main__':
         oldpath = bpy.path.abspath(img.filepath)
         old_dir, old_f = os.path.split(convertFileNameToPanda(oldpath))
         f_names = [s.lower() for s in old_f.split('.')]
-        if not f_names[-1] in ('jpg', 'png', 'tga', 'tiff', 'dds', 'bmp') and img.is_dirty:
+        if f_names[-1] not in ('jpg', 'png', 'tga', 'tiff', 'dds', 'bmp') and img.is_dirty:
             old_f += ('.' + bpy.context.scene.render.image_settings.file_format.lower())
         rel_path = os.path.join(text_path, old_f)
         if os.name == 'nt':
