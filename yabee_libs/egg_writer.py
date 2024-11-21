@@ -139,7 +139,7 @@ class Group:
                             return ['ERR_MK_OBJ', ]
                     self.children.append(group)
                     group.make_hierarchy_from_list(obj_list)
-        except Exception as exc:
+        except Exception:
             print_exc()
             return ['ERR_MK_HIERARCHY', ]
         return []
@@ -657,6 +657,8 @@ class EGGMeshObjectData(EGGBaseObjectData):
         else:
             # if material has no texture:
             for mat in self.obj_ref.data.materials:
+                if not mat:
+                    continue
                 nodeTree = mat.node_tree
                 if nodeTree and nodeTree.nodes:
                     for pandaShaderNode in nodeTree.links:
@@ -1743,7 +1745,7 @@ def write_out(fname, anims, from_actions, uv_img_as_tex, sep_anim, a_only,
                     subprocess.Popen(['pview', '-i', fp] + fpa)
                 except:
                     print('ERROR: Can\'t execute pview')
-    except Exception as exc:
+    except Exception:
         errors.append('ERR_UNEXPECTED')
         # print('\n'.join(format_tb(exc.__traceback__)))
         print_exc()
